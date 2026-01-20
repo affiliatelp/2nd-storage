@@ -1,0 +1,3339 @@
+
+@charset "UTF-8";
+
+body {
+  margin: 0;
+	padding: 0;
+	/* ページの背景色はbodyに適用し、PCで左右の余白部分まで色を付ける */
+	background-color: #f5f5f5; 
+	font-family: 'Noto Sans JP', sans-serif;
+	line-height: 1.6;
+	color: #333;
+	text-align: center;
+	font-size:  1.2rem; /* 12px */
+}
+
+a {
+		text-decoration: none;
+}
+
+li {
+		list-style: none;
+}
+
+/* -------------------- 共通コンテナ設定 (.lp-containerのみで制御) -------------------- */
+.lp-container {
+		width: 100%; /* モバイルでは画面いっぱいに */
+		
+		/* PCでの中央揃えと固定幅の設定 */
+		margin: 0 auto;
+		
+		/* LPのコンテンツ領域の背景色（白） */
+		background-color: #ffffff;
+		padding-bottom: 20px;
+
+		/* モバイルでの左右の余白（コンテンツが画面端に張り付かないように） */
+		/* bodyにpaddingを入れる代わりに、lp-containerの子要素で対応 */
+}
+
+/* PC・タブレットでの幅固定と中央揃え */
+@media (min-width: 601px) {
+		/* bodyへの設定を外し、lp-containerにのみ適用 */
+		.lp-container {
+			max-width: 600px;
+				
+		}
+}
+
+/* 【画像】常に親要素の幅に合わせる */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	/* 全てのブロックレベルの画像を中央揃えにする */
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+/*header*/
+.site-logo {
+  background-color: #fceb9c;  /* 背景色クリームイエロー */
+  border-radius: 15px; /* 角の丸み */
+  padding: 12px 25px; /*内側の余白*/
+  color: #313131;    /* テキストとアイコンの色 */
+  font-weight: bold;   /* 文字を太く */
+  color: #12318F; /* フォントカラー */
+  font-size: 0.9rem;
+
+  /* レイアウト（横並びにするため） */
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-title img {
+  padding: 0 5px; /*アイコンと文字の幅*/
+}
+
+
+/* -------------------- header -------------------- */
+header {
+  padding: 20px 10px;
+  position: relative;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ロゴのアイコンサイズ調整 */
+.site-logo img {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
+
+/* ハンバーガーボタンのデザイン */
+.toggle_btn {
+  width: 50px;
+  height: 50px;
+  background-color: #12318f; /* 濃い青 */
+  border-radius: 12px;       /* 角丸 */
+  position: relative;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;   /* 画面に対して固定 */
+  right: 20px;        /* 画面右端からの距離（お好みで調整） */
+  pointer-events: auto;
+}
+
+.toggle_btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  left: 13px;
+  transition: 0.3s;
+}
+
+.toggle_btn span:nth-child(1) { top: 16px; }
+.toggle_btn span:nth-child(2) { top: 24px; }
+.toggle_btn span:nth-child(3) { top: 32px; }
+
+/* メニュー展開時の共通設定（マスク） */
+#mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+}
+
+/* -------------------- 導入・メインセクション -------------------- */
+.hero {
+  padding: 40px 20px;
+}
+
+.hero-copy {
+  font-size: 1.4rem;
+  color: #313131;
+  font-weight: 700;
+  line-height: 2;
+  margin-bottom: 30px;
+  text-align: left; /* 左揃え */
+}
+
+.hero-copy br {
+  display: block;
+}
+
+#mainvisual {
+  margin-bottom: 30px;
+}
+
+#mainvisual img {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* リード文 */
+.intro-text {
+  text-align: left;
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: #555;
+  padding: 0 15px;
+}
+
+.intro-text p {
+  margin-bottom: 9%;
+}
+
+/* 「宅配型トランクルーム」強調部分 */
+.catch-highlight {
+  margin-bottom: 50px;
+  font-size: 1.2rem;
+}
+
+.catch-highlight p:nth-child(2) {
+  display: inline-block;
+  background-color: #fceb9c; /* 黄色背景 */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #12318f;
+  padding: 5px 15px;
+  margin: 10px 0;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+  .hero-copy {
+    font-size: 2rem;
+  }
+}
+
+/* -------------------- キャンペーン・CVエリア -------------------- */
+.campaign-card {
+  background-color: #fceb9c;
+  border-radius: 25px;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.campaign-title {
+  font-size: 1.5rem;
+  color: #12318f;
+  margin-bottom: 15px;
+}
+
+.campaign-note {
+  font-size: 1rem;
+  color: #313131;
+  margin-bottom: 20px;
+}
+
+/* ボタン共通 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 12px;
+  transition: 0.3s;
+  width: 100%;
+  height: 55px;
+  font-size: 1.2rem;
+}
+
+/* プラン確認ボタン */
+.btn-secondary {
+  background-color: #fff;
+  color: #12318f;
+  border: 2px solid #12318f;
+}
+
+/* 会員登録ボタン */
+.btn-primary {
+  background-color: #12318f;
+  color: #fff;
+  margin: 15px 0 15px 0;;
+  box-shadow: 0 4px 15px rgba(18, 49, 143, 0.4);
+  position: relative;
+}
+
+.btn-primary::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+}
+
+.btn-primary + p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+
+/* --- ハンバーガーメニュー(nav)のスタイル --- */
+nav {
+  position: fixed;
+  top: 0;
+  right: -100%; /* 初期状態は画面外 */
+  width: 80%;    /* メニューの横幅 */
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 1000;
+  padding: 80px 30px 40px;
+  transition: all 0.5s ease;
+  text-align: left;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
+
+/* メニューが開いた状態 */
+nav.open {
+  right: 0;
+}
+
+/* ボタンを包む固定コンテナ */
+.nav-fixed-container {
+  position: fixed;
+  top: 20px;          /* 上からの位置 */
+  left: 50%;          /* 一旦画面の真ん中に持ってくる */
+  transform: translateX(-50%); /* 自身の幅の半分戻して中央揃え */
+  
+  width: 100%;        /* 基本は100% */
+  max-width: 600px;   /* LPのコンテンツ幅に合わせる */
+  height: 0;          /* コンテナ自体は高さを取らない */
+  
+  z-index: 1000;      /* 最前面に */
+  pointer-events: none; /* コンテナ自体はクリックを邪魔しない */
+}
+
+
+
+/* マスク（背景）の制御 */
+#mask {
+  display: none; /* 初期は非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+}
+
+#mask.open {
+  display: block;
+}
+
+/* メニュー内リストの装飾 */
+nav ul {
+  padding: 0;
+}
+
+nav ul li {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 0;
+}
+
+nav ul li a {
+  color: #12318F;
+  font-weight: bold;
+  font-size: 1rem;
+  display: block;
+}
+
+/* 「メニュー：気になるセクションへ移動」の部分 */
+nav ul li:first-child a {
+  font-size: 1.8rem;
+}
+
+nav ul li p {
+  font-size: 1rem;
+  color: #888;
+  margin: 5px 0 0;
+}
+
+/* --- ボタンを「×」にするアニメーション --- */
+.toggle_btn.active span:nth-child(1) {
+  top: 24px;
+  transform: rotate(45deg);
+}
+
+.toggle_btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.toggle_btn.active span:nth-child(3) {
+  top: 24px;
+  transform: rotate(-45deg);
+}
+
+/* 既存のtoggle_btnにz-indexを追加（メニューより上に来るように） */
+.toggle_btn {
+  z-index: 1100;
+}
+
+/* -------------------- 宅配型トランクルームとは（Aboutセクション） -------------------- */
+
+.about-section {
+    background-color: #12318f; /* 画像通りの濃い青 */
+    padding: 60px 20px 20px 20px;
+    color: #ffffff;
+}
+
+.about-section .section-title {
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.about-visual {
+    margin-bottom: 30px;
+}
+
+.about-visual img {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 特徴リストのカードデザイン */
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.feature-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #333; /* 文字は読みやすく暗い色 */
+    text-align: left;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 50px;
+}
+
+.feature-content h3 {
+    font-size: 1rem;
+    color: #12318f;
+    margin: 0 0 5px 0;
+}
+
+.feature-content p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* -------------------- 開閉ギミック（CSSのみ） -------------------- */
+
+/* チェックボックスは隠す */
+.toggle-checkbox {
+    display: none;
+}
+
+/* 開閉ボタンのデザイン */
+.details-toggle {
+    margin-bottom: 20px;
+}
+
+.btn-about-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #12318f;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 矢印（Vの字） */
+.toggle-arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #12318f;
+    border-bottom: 2px solid #12318f;
+    transform: rotate(45deg);
+    margin-left: 10px;
+    margin-bottom: 3px;
+    transition: transform 0.3s ease;
+}
+
+/* 通常時は「閉じる」を隠す */
+.text-close {
+    display: none;
+}
+
+/* 隠しコンテンツの初期状態 */
+.details-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    text-align: left;
+}
+.description-text {
+    padding: 0 5px;
+}
+
+
+.description-text p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 7%;
+}
+
+/* -------------------- チェックされた時（開いた時）の挙動 -------------------- */
+
+/* 1. コンテンツを表示 */
+.toggle-checkbox:checked ~ .details-content {
+    max-height: 2000px; /* 十分な高さを確保 */
+    opacity: 1;
+    margin-top: 20px;
+}
+
+/* 2. 「詳しく見る」を隠して「閉じる」を出す */
+.toggle-checkbox:checked ~ .details-toggle .text-open {
+    display: none;
+}
+.toggle-checkbox:checked ~ .details-toggle .text-close {
+    display: block;
+}
+
+/* 3. 矢印を上向きに回転 */
+.toggle-checkbox:checked ~ .details-toggle .toggle-arrow {
+    transform: rotate(-135deg);
+    margin-bottom: -3px;
+}
+
+/* -------------------- CTA 1セクション -------------------- */
+
+.cta-section {
+    background-color: #12318f; /* 濃い青背景 */
+    padding: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 500px; /* カードのような幅に制限 */
+    margin: 0 auto;
+}
+
+.cta-main-copy {
+    font-size: 2rem;
+    color: #fceb9c; /* キャッチコピーは黄色 */
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.cta-sub-copy {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* ボタン周り */
+.cta-button-wrapper {
+    margin-bottom: 30px;
+}
+
+.btn-main-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 8px 0;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 8px 0 #d9c56b; /* 立体的なボタンの影 */
+    transition: all 0.2s;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.btn-main-yellow:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #d9c56b;
+}
+
+.btn-icon {
+    width: 24px;
+    margin-right: 15px;
+}
+
+.btn-main-yellow .arrow {
+    margin: 0 15px;
+}
+
+.cta-campaign-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* 区切り線 */
+.cta-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 40px 0;
+}
+
+/* 下部メリットリスト */
+.benefit-list {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block; /* 中央揃えの中での左寄せ */
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.benefit-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* アイコンを丸く */
+    object-fit: cover;
+}
+
+.benefit-text h3 {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+}
+
+.benefit-text p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+
+/* -------------------- おすすめセクション -------------------- */
+.recommend-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.recommend-section .section-title {
+    color: #12318f;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* ターゲットリスト */
+.target-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+
+.target-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+/* アイコン共通（紺色の四角形） */
+.target-icon {
+    width: 65px;
+    height: 65px;
+    background-color: #12318f;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.target-icon img {
+    width: 35px;
+    height: auto;
+}
+
+.target-text {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 各アイテムの背景色 */
+.item-blue { background-color: #f0f4ff; }
+.item-green { background-color: #f0fff4; }
+.item-pink { background-color: #fff0f0; }
+.item-purple { background-color: #f4f0ff; }
+
+/* -------------------- CTAエリア 2 (黄色いカード) -------------------- */
+.sub-cta {
+    background-color: #fceb9c;
+    border-radius: 30px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.sub-cta-badge {
+    display: inline-block;
+    background-color: #12318f;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.sub-cta-title {
+    font-size: 1.6rem;
+    color: #12318f;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.sub-cta-note {
+    font-size: 1rem;
+    color: #12318f;
+    margin-bottom: 30px;
+}
+
+/* 下部ボタン */
+.btn-primary-blue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #12318f;
+    color: #ffffff;
+    padding: 18px 0;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(18, 49, 143, 0.3);
+    transition: transform 0.2s;
+}
+
+
+
+
+.btn-primary-blue:active {
+    transform: translateY(3px);
+}
+
+.btn-primary-blue .star {
+    margin-right: 10px;
+}
+
+.btn-primary-blue .arrow {
+    margin-left: 10px;
+}
+
+/* -------------------- 選ばれる理由セクション -------------------- */
+
+.reasons-section {
+    background-color: #12318f; /* 深いネイビー */
+    padding: 60px 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 上部のバッジ（黄色い丸） */
+.badge-yellow {
+    display: inline-block;
+    background-color: #fceb9c; /* 明るい黄色 */
+    color: #12318f;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ブランドロゴタイトル */
+.brand-title {
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.brand-title .en {
+    font-size: 3rem; 
+    font-weight: 500;
+    color: #fceb9c;
+}
+
+.brand-title .en-large {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-top: -10px;
+}
+
+/* リード文（説明文） */
+.reasons-lead {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0 10px 25px;
+    text-align: left; /* テキスト量が多いので左寄せまたは中央揃え */
+    opacity: 0.9;
+}
+
+/* 4つのタイルグリッド */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2列 */
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.feature-tile {
+    background-color: rgba(255, 255, 255, 0.1); /* 白の透過背景 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 薄い枠線 */
+    border-radius: 20px;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.tile-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fceb9c; /* 数字は黄色 */
+    margin: 0 0 5px 0;
+}
+
+.tile-label {
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .brand-title .en { 
+        font-size: 4rem; 
+    }
+    .brand-title .en-large {
+        font-size: 4rem; 
+    }
+    .tile-number { 
+        font-size: 2.3rem; 
+    }
+    .reasons-lead {
+        margin: 0 25px 30px;
+    }
+
+    .feature-list {
+        margin: 0 20px 30px 20px;
+    }
+
+    .description-text {
+        padding: 0 20px;
+    }
+
+    .target-list {
+        padding: 0 20px;
+    }
+
+    .recommend-section .section-title {
+        font-size: 1.8rem;
+    }
+
+    .feature-content p {
+        font-size: 1rem;
+    }
+
+    .description-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* -------------------- ポイントセクション全体 -------------------- */
+.points-section {
+    padding: 55px 25px 30px 25px;
+    background-color: #ffffff;
+}
+
+.point-card {
+    margin-bottom: 70px; /* カード同士の間隔 */
+    text-align: left;
+}
+
+/* --- 写真とナンバリング --- */
+.point-visual {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.point-visual img {
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.point-number {
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #12318f;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ナンバー背景色の出し分け */
+.circle-yellow { background-color: #fceb9c; }
+.circle-blue { background-color: #12318f; color: #ffffff; } /* 02と04は濃い青 */
+
+/* --- テキストエリア --- */
+.point-title {
+    font-size: 1.3rem;
+    color: #12318f;
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 0 10px 15px 10px;
+}
+
+.point-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333;
+    margin: 0 10px 15px 10px;
+}
+
+/* --- ノート・補足ボックス --- */
+.point-note {
+    display: flex;
+    align-items: flex-start;
+    padding: 13px 20px;
+    border-radius: 15px;
+    gap: 15px;
+}
+
+.icon-info, .note-icon, .icon-heart {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* 各ノートの背景と文字色 */
+.note-yellow { background-color: #fffceb; color: #12318f; }
+.note-gray { background-color: #f1f3f8; color: #12318f; }
+.note-pink { 
+    background-color: #fff0f5; 
+    color: #12318f;
+    border-left: 4px solid #f06292; /* ポイント3は左線でアクセント */
+}
+
+.note-content h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.note-content p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Point 04: オプションエリア --- */
+.option-grid {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 15px;
+}
+
+.option-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.option-text {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.item-light-blue { background-color: #eff6ff; color: #12318f; }
+.item-light-green { background-color: #f0fdf4; color: #12318f; }
+
+/* --- 下部引用ボックス --- */
+.summary-quote-box {
+    background-color: #fceb9c;
+    border-radius: 20px;
+    padding: 40px 25px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.quote-icon {
+    font-size: 6rem;
+    line-height: 1;
+    color: #12318f;
+    display: block;
+    margin-bottom: -15px;
+    font-family: serif;
+}
+
+.summary-quote-box p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #12318f;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .points-section {
+        padding: 55px 40px 30px 40px;
+    }
+    .point-number {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+    }
+    .summary-quote-box p {
+        font-size: 1.2rem;
+    }
+
+    .point-title {
+        font-size: 1.6rem;
+    }
+
+    .point-desc {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* -------------------- 特徴セクション全体 -------------------- */
+.features-detail-section {
+    padding: 40px 25px 0 25px;
+    background-color: #ffffff;
+}
+
+.features-detail-section .section-title {
+    color: #12318f;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.feature-block {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+/* FEATUREタグ (アイコン＋紺色/黄色背景) */
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #12318f; /* 基本は紺 */
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* FEATURE 02, 04は黄色タグ */
+.feature-block:nth-of-type(2) .feature-tag,
+.feature-block:nth-of-type(4) .feature-tag {
+    background-color: #FAE26B;
+}
+
+.feature-icon-wrap img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.tag-label {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #fff;
+    letter-spacing: 0.1em;
+}
+
+.feature-block:nth-of-type(2) .tag-label,
+.feature-block:nth-of-type(4) .tag-label {
+    color: #12318f;
+}
+
+/* メインビジュアルと浮きバッジ */
+.feature-main-visual {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.feature-main-visual img {
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.floating-badge {
+    position: absolute;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* 01は左下、02は右下 */
+.feature-block:nth-of-type(1) .floating-badge {
+    bottom: 10px;
+    left: 10px;
+}
+
+.feature-block:nth-of-type(2) .floating-badge {
+    bottom: 10px;
+    right: 10px;
+    background-color: #12318f;
+    color: #fff;
+}
+
+/* テキスト部分 */
+.feature-sub-title {
+    font-size: 1.3rem;
+    color: #12318f;
+    font-weight: bold;
+    margin: 0 10px 15px 10px;
+    line-height: 1.4;
+}
+
+.feature-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 10px 15px 10px;
+    color: #333;
+}
+
+/* 補足チップ */
+.feature-tip {
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.tip-yellow { 
+    background-color: #fffceb; 
+    border-left: 5px solid #fceb9c; 
+}
+.tip-light-blue { 
+    background-color: #f0f7ff; 
+    border-left: 5px solid #12318f; 
+}
+
+/* FEATURE 03: オプションカードリスト */
+.option-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 15px;
+    gap: 15px;
+}
+
+.option-img {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.option-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.option-info h4 {
+    font-size: 1rem;
+    color: #12318f;
+    margin: 0 0 5px 0;
+}
+
+.option-info p {
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.4;
+    color: #666;
+}
+
+/* FEATURE 04: 紺色背景エリア */
+.feature-dark-blue {
+    background-color: #12318f;
+    padding: 40px 25px;
+    border-radius: 30px;
+    color: #fff;
+}
+
+.feature-white-title {
+    color: #fceb9c;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.feature-white-text {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* サポートボックス (内側のカード) */
+.support-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.support-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px 10px;
+    border-radius: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.support-icon {
+    width: 24px;
+    flex-shrink: 0;
+}
+
+.support-content h4 {
+    color: #fceb9c;
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.support-content p {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+
+    .feature-tag {
+        padding: 10px;
+    }
+
+    .features-detail-section{
+        padding: 55px 40px 30px 40px;
+    }
+
+    .features-detail-section .section-title {
+        font-size: 2rem;
+    }
+
+    .feature-description {
+        font-size: 1rem;
+    }
+
+    .feature-sub-title {
+        font-size: 1.6rem;
+    }
+
+    .tag-label {
+        font-size: 1rem;
+    }
+
+    .floating-badge {
+        font-size: 1.2rem;
+    }
+
+    .feature-tip {
+        font-size: 1rem;
+    }
+
+    .option-info p {
+        font-size: 0.9rem;
+    }
+
+    .feature-white-text {
+        font-size: 1.2rem;
+    }
+
+    .support-content h4 {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* -------------------- CTA03セクション -------------------- */
+
+.upgrade-cta-section {
+    background-color: #12318f; /* 濃い紺色の背景 */
+    padding: 80px 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 上部アイコン：黄色い円 */
+.cta-icon-top {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.icon-circle-yellow {
+    width: 70px;
+    height: 70px;
+    background-color: #fceb9c; /* 明るい黄色 */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bolt-icon {
+    width: 40px;
+    height: auto;
+}
+
+/* タイトル */
+.upgrade-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 35px;
+    letter-spacing: 0.05em;
+}
+
+/* 説明文 */
+.upgrade-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 45px;
+    opacity: 0.95;
+}
+
+.upgrade-description p {
+    margin-bottom: 0.5em;
+}
+
+/* アップグレードボタン */
+.upgrade-button-wrapper {
+    margin-top: 20px;
+}
+
+.btn-upgrade-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 5px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* 浮き上がるような強い影 */
+    transition: all 0.2s ease;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 20px;
+}
+
+.btn-upgrade-yellow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-upgrade-yellow:active {
+    transform: translateY(3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-upgrade-yellow .arrow {
+    margin-left: 5px;
+    font-size: 1.6rem;
+}
+
+/* 運営会社ラベル */
+.trust-label {
+    font-size: 0.85rem;
+    color: #ffffff;
+    opacity: 0.8;
+    margin-top: 15px;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .upgrade-title {
+        font-size: 2rem;
+    }
+    .upgrade-description {
+        font-size: 1.2rem;
+    }
+    .btn-upgrade-yellow {
+        font-size: 1.1rem;
+        padding: 5px 20px;
+    }
+}
+
+
+/* -------------------- 活用例セクション -------------------- */
+.usecase-section {
+    padding: 80px 25px 47px 25px;
+    background-color: #f8f9fa; /* 背景は薄いグレーでカードを際立たせる */
+}
+
+.usecase-section .section-title {
+    color: #12318f;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-lead {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 15px 40px 15px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* 上部ナビゲーション */
+/* -------------------- 活用例ナビゲーション -------------------- */
+
+.usecase-nav {
+    margin: 40px 0 60px;
+    padding: 0 10px;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between; /* 5つを均等に配置 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px; /* スマホでの詰まりすぎ防止 */
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    /*transition: transform 0.2s ease;*/
+}
+
+/* 円のベース：CSSで丸を作成 */
+.icon-circle {
+    width: 54px; /* スマホサイズに合わせて調整 */
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    /* 画像のような下方向への柔らかい影 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* アイコン画像のサイズ */
+.icon-circle img {
+    width: 28px;
+    height: auto;
+    /* アイコンが白単色の場合は以下を有効にすると調整しやすいです */
+    /* filter: brightness(0) invert(1); */
+}
+
+/* 各項目のイメージカラー */
+.item-solo .icon-circle { background-color: #4A86FF; }    /* 青 */
+.item-couple .icon-circle { background-color: #F091B2; }  /* ピンク */
+.item-family .icon-circle { background-color: #61C361; }  /* 緑 */
+.item-senior .icon-circle { background-color: #F27F3A; }  /* オレンジ */
+.item-business .icon-circle { background-color: #12318F; }/* 紺 */
+
+/* 選択中（active）のスタイル：画像のように少し強調 */
+.nav-item.active .icon-circle {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* テキストラベル */
+.nav-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #12318f;
+    white-space: nowrap; /* 改行防止 */
+}
+
+.nav-item.active .nav-label {
+    color: #12318f; /* 選択中のみ文字色を濃く */
+}
+
+/* PCサイズでの微調整 */
+@media (min-width: 555px) {
+    .icon-circle {
+        width: 70px;
+        height: 70px;
+    }
+    .icon-circle img {
+        width: 40px;
+    }
+    .nav-label {
+        font-size: 1rem;
+    }
+    .usecase-section {
+        padding: 55px 40px 30px 40px;
+    }
+
+     .section-lead {
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+}
+/* -------------------- 活用例カード -------------------- */
+.usecase-card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 30px 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* ヘッダー：写真とバッジの重なり */
+.case-header {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.case-visual img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* 左上のアイコン正方形 */
+.icon-square {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 62px;
+    height: 62px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.icon-square img { width: 35px; }
+
+/* 右下の番号バッジ */
+.case-number {
+    position: absolute;
+    bottom: -10px;
+    right: 14px;
+    background: #fff;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: #12318f;
+    font-weight: bold;
+    font-size: 1.4rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid #fceb9c;
+}
+
+/* 色バリエーション */
+.bg-blue { background-color: #4A86FF; }
+.bg-pink { background-color: #F091B2; }
+.bg-green { background-color: #61C361; }
+.bg-orange { background-color: #F27F3A; }
+.bg-yellow { background-color: #fceb9c; }
+
+/* ボディテキスト */
+.target-badge {
+    display: inline-block;
+    background: #fffceb;
+    color: #12318f;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid #fceb9c;
+}
+
+.case-title {
+    font-size: 1.3rem;
+    color: #12318f;
+    margin: 0 10px 15px 10px;
+}
+
+.case-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 10px 15px 10px;
+}
+
+/* おすすめオプションボックス */
+.case-option-box {
+    background: linear-gradient(to bottom, #ffffff, #fffceb);
+    border: 1.5px solid #12318f;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+}
+
+.case-option-box img {
+     margin: 0 5px 0 0;
+}
+
+.option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #12318f;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.support-icon-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.support-icon-wrap img{
+    margin: 0 5px 0 0;
+}
+
+
+.option-text2 {
+    font-size: 0.9rem;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .case-description {
+        font-size: 1rem;
+    }
+
+    .case-title {
+        font-size: 1.8rem;
+    }
+
+    .usecase-card {
+        padding: 30px 20px;
+    }
+}
+
+/* -------------------- CASE 03 特有（横並びボックス） -------------------- */
+.case-flex-boxes {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-box-item {
+    flex: 1;
+    background: #f0fdf4;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.flex-icon img { width: 30px; margin-bottom: 8px; }
+
+/* -------------------- CASE 05 特有（紺背景） -------------------- */
+.case-dark-blue {
+    background-color: #12318f;
+    color: #fff;
+}
+
+.case-title-white { 
+    color: #fff;
+    font-size: 1.3rem; 
+    margin: 0 10px 15px 10px;
+}
+
+.badge-yellow {
+    background: #fceb9c; 
+    border: none; 
+}
+
+.case-support-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    gap: 15px;
+}
+
+/* -------------------- フッターカード -------------------- */
+.usecase-footer {
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 13px;
+}
+
+.white-circle, .white-circle-navy {
+    margin-left: -40px; 
+}
+
+.white-circle:first-child { margin-left: 0; }
+
+.footer-icons img { width: 100px; }
+.footer-copy { 
+    color: #12318f; 
+    font-size: 1.2rem; 
+    margin-bottom: 15px; }
+
+
+/* -------------------- CTA 4セクション -------------------- */
+.final-cta-section {
+    background-color: #12318f; /* 濃いネイビー */
+    padding: 80px 25px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* ヘッダー部分 */
+.final-cta-header {
+    margin-bottom: 50px;
+}
+
+.final-cta-header .badge-yellow {
+    display: inline-block;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.final-cta-title {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.final-cta-title .highlight {
+    color: #fceb9c;
+    font-size: 2rem; /* 理想の収納を強調 */
+}
+
+.final-cta-lead {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* メリットリスト (3つの白いカード) */
+/* -------------------- 最終CTA：メリットリスト（修正版） -------------------- */
+
+.final-merit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* 境界線を使うためギャップを0に */
+    margin-bottom: 40px;
+    text-align: left; /* 左寄せに変更 */
+}
+
+.merit-item {
+    display: flex; /* 横並びにする */
+    align-items: center; /* 上下中央揃え */
+    background: transparent; /* 白い背景を消す */
+    padding: 20px 0; /* 上下の余白 */
+    box-shadow: none; /* 影を消す */
+    color: #ffffff;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* 一番下の線は不要な場合 */
+.merit-item:last-child {
+    border-bottom: none;
+}
+
+/* アイコン：黄色い円形 */
+
+.merit-icon img {
+    width: 100px;
+    height: 100px;
+   
+}
+
+/* テキストエリア */
+.merit-item h3 {
+    font-size: 1rem;
+    color: #fceb9c; /* タイトルを黄色に（画像2枚目のイメージ） */
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.merit-item p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+    padding: 0 20px;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .merit-icon {
+        width: 100px;
+        height: 100px;
+        margin-right: 15px;
+    }
+    .merit-item h3 {
+        font-size: 1.6rem;
+    }
+    .merit-item p {
+        font-size: 1.1rem;
+    }
+    .case-title-white {
+        font-size: 1.8rem;
+    }
+    .final-cta-lead {
+        font-size: 1.1rem;
+    }
+    .final-cta-header .badge-yellow {
+        font-size: 1.3rem;
+        padding: 12px 25px;
+    }
+    .final-cta-title {
+        font-size: 2rem;
+    }
+    .final-cta-title .highlight {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* 3ステップガイド (中央の青みがかった枠) */
+.step-guide-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 40px 20px;
+    margin-bottom: 60px;
+}
+
+.step-guide-title {
+    font-size: 1rem;
+    color: #fceb9c;
+    margin-bottom: 35px;
+}
+
+.step-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 320px;
+    text-align: left;
+}
+
+.step-number {
+    width: 45px;
+    height: 45px;
+    background-color: #fceb9c;
+    color: #12318f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.step-number.num-blue {
+    background-color: #ffffff;
+}
+
+.step-content h4 {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.step-content p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.step-arrow {
+    font-size: 2.4rem;
+    color: #fceb9c;
+    margin: 10px 0;
+}
+
+/* アクションエリア（メインボタンとチェックリスト） */
+.final-action-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-final-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fceb9c;
+    color: #12318f;
+    width: 88%;
+    max-width: 400px;
+    padding: 10px 0;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 0 10px 0 #d9c56b; /* 強い立体感 */
+    margin-bottom: 30px;
+    transition: all 0.2s;
+}
+
+.btn-final-yellow:active {
+    transform: translateY(6px);
+    box-shadow: 0 4px 0 #d9c56b;
+}
+
+.btn-final-yellow .icon-star { 
+    margin-right: 12px; 
+}
+
+.btn-final-yellow .arrow { 
+    margin-left: 12px; 
+}
+
+.final-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.final-check-list li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.final-check-list img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* PCサイズ用調整 */
+@media (min-width: 768px) {
+    .final-merit-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .step-guide-title {
+        font-size: 1.4rem;
+    }
+
+    .step-content h4 {
+        font-size: 1.3rem;
+    }
+
+    .step-content p {
+        font-size: 1rem;
+    }
+
+    .final-check-list li {
+        font-size: 1.1rem;
+    }
+
+    .btn-final-yellow {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* -------------------- 利用の流れ全体 -------------------- */
+.flow-section {
+    padding: 60px 25px;
+    background-color: #f8f9fa;
+}
+
+.flow-section .section-title {
+    color: #12318f;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* STEPカード共通 */
+.flow-step-card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.step-label {
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+/* 各STEPの色指定 */
+.label-navy { background-color: #12318f; }
+.label-yellow { background-color: #fceb9c; color: #12318f; }
+.label-blue { background-color: #4A86FF; }
+.label-green { background-color: #61C361; }
+.label-orange { background-color: #F27F3A; }
+
+.step-title {
+    font-size: 1.3rem;
+    color: #12318f;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.step-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* 画像の共通設定 */
+.flow-img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.step-visual-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* カード内の補足ボックス (info-box) */
+.info-box {
+    padding: 15px 10px 1px 10px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.info-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #12318f;
+    font-size: 1rem;
+}
+
+.info-icon { 
+    width: 24px; 
+    height: auto; 
+    margin: 0;
+}
+
+.box-yellow { background-color: #fffceb; border-left: 5px solid #fceb9c; }
+.box-green-light { background-color: #f0fff4; border-left: 5px solid #61C361; }
+.box-blue-light { background-color: #f0f7ff; border-left: 5px solid #4A86FF; }
+.box-orange-light { background-color: #fff7f0; border-left: 5px solid #F27F3A; }
+
+/* STEP 4用のミニボックス */
+.info-flex-group {
+    display: flex;
+    gap: 10px;
+}
+
+.info-mini-box {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 15px 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #12318f;
+}
+
+.mini-icon { width: 30px; margin-bottom: 5px; }
+
+/* 継続利用・安心保証共通 */
+.benefit-card {
+    border-radius: 30px;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+.bg-navy-dark { background-color: #12318f; color: #fff; }
+.bg-white { background-color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+.benefit-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.icon-square-yellow, .icon-square-blue {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-square-yellow { background-color: #fceb9c; }
+.icon-square-blue { background-color: #12318f; }
+
+.icon-square-yellow img, .icon-square-blue img { width: 25px; }
+
+.benefit-card-title { 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+}
+
+.benefit-card-body p {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.text-yellow {
+    color: #fceb9c; 
+}
+
+.text-blue { 
+    color: #12318f; 
+}
+
+/* 継続割引の矢印フロー */
+.discount-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 10px 0 15px;
+    justify-content: center;
+}
+
+.discount-badge {
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+
+.discount-label { 
+    font-weight: bold; 
+    color: #fceb9c; 
+    font-size: 1rem;
+}
+
+/* 安心保証の価格ボックス */
+.warranty-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.warranty-item {
+    flex: 1;
+    padding: 20px 10px;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bg-gray-light { background-color: #f8f9fa; }
+.bg-yellow-light { background-color: #fffceb; }
+
+.warranty-price { font-size: 1.8rem; font-weight: bold; color: #12318f; }
+.warranty-label { font-size: 1.2rem; color: #666; }
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .step-title {
+        font-size: 1.6rem;
+    }
+
+    .step-label {
+        font-size: 1rem;
+    }
+
+    .step-body p {
+        font-size: 1.1rem;
+    }
+
+    .info-title {
+        font-size: 1.2rem;
+    }
+
+    .benefit-card-body p {
+        font-size: 1.1rem;
+    }
+
+    .discount-badge {
+        font-size: 1.2rem;
+    }
+
+    .discount-label {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* -------------------- つまり（まとめ）カード -------------------- */
+.summary-conclusion-card {
+    background: linear-gradient(135deg, #12318f 0%, #2a4dbd 100%);
+    border-radius: 30px;
+    padding: 60px 20px 40px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    margin-top: 60px;
+}
+
+.summary-quote-icon {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #fceb9c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.quote-icon { font-size: 4rem; color: #12318f; font-family: serif; }
+
+.summary-inner-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 15px;
+    margin-bottom: 30px;
+}
+
+.summary-lead { 
+    font-size: 1.1rem; 
+    color: #fff; 
+    margin-bottom: 10px; 
+}
+
+.summary-main-copy { 
+    font-size: 1.3rem; 
+    font-weight: bold; 
+    line-height: 1.5; 
+}
+
+.text-yellow { 
+    color: #fceb9c; 
+}
+
+/* 下部のチェックリスト */
+.summary-check-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.summary-check-list li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.summary-check-list li::before {
+    content: "●";
+    color: #fceb9c;
+    margin-right: 5px;
+}
+
+/* -------------------- 最終CTA5セクション -------------------- */
+
+.final-closing-section {
+    padding: 50px 20px;
+    /* 背景：画像のような薄い黄色から白、そして薄い青へのグラデーション */
+    background: linear-gradient(to bottom, #fffceb 0%, #ffffff 50%, #C4D3FF 100%);
+    text-align: center;
+}
+
+/* メインの白いカード */
+.closing-card {
+    background-color: #ffffff;
+    border-radius: 40px; /* 大きめの角丸 */
+    padding: 30px 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* 柔らかい影 */
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 上部の薄い黄色い引用ボックス */
+.closing-quote-box {
+    background-color: #fffceb; /* 薄い黄色 */
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.quote-mark {
+    width: 40px;
+    margin: 0 auto 15px;
+}
+
+.quote-mark img {
+    width: 100%;
+    height: auto;
+}
+
+.quote-text {
+    color: #12318f;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* メッセージエリア */
+.closing-message-area {
+    margin-bottom: 40px;
+}
+
+.closing-main-title {
+    color: #12318f;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.closing-sub-text {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+/* ボタンのスタイリング */
+.btn-final-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #12318f; /* 濃い紺色 */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(18, 49, 143, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.btn-final-cta:active {
+    transform: translateY(3px);
+    box-shadow: 0 4px 10px rgba(18, 49, 143, 0.3);
+}
+
+.btn-icon {
+    width: 22px;
+    margin: 0 15px;
+}
+
+.btn-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.btn-arrow {
+    margin-left: 10px;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .closing-card {
+        padding: 40px 20px;
+    }
+
+    .closing-main-title {
+        font-size: 2rem;
+    }
+
+     .btn-final-cta {
+        font-size: 1.4rem;
+    }
+
+    .summary-main-copy {
+        font-size: 1.5rem;
+    }
+
+    .summary-lead {
+        font-size: 1.3rem;
+    }
+
+    .summary-check-list li {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* -------------------- プランセクション全体 -------------------- */
+.plan-section {
+    background-color: #ffffff;
+    padding: 80px 25px 10px 25px;
+}
+
+.plan-section .section-title {
+    color: #12318f;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* -------------------- メインプランカード -------------------- */
+.plan-cards {
+    margin-bottom: 40px;
+}
+
+.plan-card {
+    background: #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    margin-bottom: 40px;
+}
+
+/* 人気No.1バッジ */
+.plan-badge-top {
+    position: absolute;
+    background-color: #ff5a5a;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 0 0 10px 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    z-index: 2;
+}
+
+.plan-header {
+    padding: 30px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.plan-tag {
+    display: inline-block;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+/* カードごとのヘッダー色 */
+.card-popular { 
+    border-color: #12318f; 
+}
+
+.card-popular .plan-header { 
+    background-color: #12318f; 
+}
+
+.card-entry { 
+    border-color: #fceb9c; 
+}
+
+.card-entry .plan-header { 
+    background-color: #fceb9c; 
+    color: #12318f; 
+}
+
+.card-entry .plan-tag { 
+    background-color: #12318f; 
+    color: #fff; 
+}
+
+.card-family { 
+    border-color: #61C361; 
+}
+
+.card-family .plan-header { 
+    background-color: #61C361; 
+}
+
+.card-family .plan-tag { 
+    background-color: #fff; 
+    color: #61C361; 
+}
+
+.plan-size { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    margin: 0 0 5px; 
+}
+
+.plan-capacity { 
+    font-size: 1rem; 
+    margin: 0; 
+}
+
+.plan-body { 
+    padding: 30px 20px; 
+    text-align: center; 
+}
+
+.campaign-label { 
+    font-size: 1rem; 
+    color: #666; 
+    margin-bottom: 10px; 
+}
+
+.plan-price { 
+    font-size: 2.2rem; 
+    font-weight: bold; 
+    color: #12318f; 
+    margin-bottom: 15px; 
+}
+
+.tax { 
+    font-size: 1.2rem; 
+    font-weight: normal; 
+    margin-left: 5px; 
+}
+
+.plan-desc { 
+    font-size: 0.85rem; 
+    line-height: 1.6; 
+    color: #333; 
+    text-align: left;
+    padding: 0 10px;
+}
+
+.trial-plan-info {
+    font-size: 1rem;
+    color: #12318f;
+    padding: 0 10px;
+    margin: 0 0 20px 0;
+}
+
+.list-items {
+    padding: 20px;
+}
+
+
+/* -------------------- 料金表リスト  -------------------- */
+.large-plan-title {
+    color: #12318f; 
+
+}
+
+.simple-price-list {
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    margin-bottom: 50px;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.large-price-table {
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    margin-bottom: 50px;
+    position: relative;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8f9fa;
+    padding: 15px 20px;
+}
+
+.header-title { 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    color: #12318f; 
+    padding: 0 5px;
+}
+
+.list-badge {
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+.list-item, .table-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    border: 1px solid #eef2f7;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.item-left { 
+    text-align: left; 
+}
+
+.item-size { 
+    font-size: 0.9rem; 
+    font-weight: bold; 
+    color: #12318f; 
+    margin: 0; 
+}
+
+.item-cap { 
+    font-size: 1rem; 
+    color: #666; 
+    margin: 0; 
+}
+
+.item-right { 
+    text-align: right; 
+}
+
+.old-price { 
+    font-size: 1rem; 
+    text-decoration: 
+    line-through; 
+    color: #aaa; 
+    margin: 0; 
+}
+
+.new-price { 
+    font-size: 1rem; 
+    font-weight: bold; 
+    color: #F27F3A; 
+    margin: 0; 
+}
+
+.new-price .arrow { 
+    margin-right: 5px; 
+}
+
+.large-plan-section {
+    text-align: left;
+}
+
+.large-plan-lead {
+    font-size: 0.9rem;
+    padding: 10px 20px 15px;
+}
+
+.table-title {
+    background: #f8f9fa;
+    padding: 15px;
+    font-weight: bold;
+    color: #12318f; 
+    border-bottom: 1px solid #eee;
+    padding: 15px 20px 10px;
+    font-size: 1rem;
+}
+
+.table-items {
+    padding: 20px;
+}
+
+/* -------------------- 継続利用割引  -------------------- */
+
+.continuous-discount-detail {
+    margin-top: 60px;
+    text-align: left;
+}
+
+.discount-lead {
+    font-size: 1rem;
+    padding: 10px 20px 5px;
+}
+
+.discount-description {
+    font-size: 1rem;
+    padding: 10px 20px 15px;
+}
+
+.discount-description p {
+    margin-bottom: 10px;
+}
+
+.discount-notes {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.discount-notes li {
+    margin-bottom: 10px;
+}
+
+.comparison-card {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.comp-header {
+    background: #f8f9fa;
+    padding: 15px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+}
+
+.comp-body { 
+    padding: 20px; 
+}
+
+.comp-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed #eee;
+    align-items: center;
+}
+
+.comp-row:last-child { 
+    border-bottom: none; 
+}
+
+.comp-label { 
+    font-size: 1rem; 
+    color: #666; 
+}
+
+.comp-price { 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+    color: #333; 
+}
+
+.diff { 
+    color: #F27F3A; 
+    font-size: 0.8rem; 
+    margin-left: 5px; 
+    font-weight: bold; 
+}
+
+.comp-price-group {
+    text-align: right;
+}
+
+/* -------------------- その他調整 -------------------- */
+.plan-notice-box {
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 50px;
+}
+
+.bg-yellow-pale { 
+    background-color: #fffceb; 
+    border: 1px solid #fceb9c; 
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.box-size-note {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* PC用調整 */
+@media (min-width: 555px) {
+    .plan-cards { 
+        flex-direction: row; 
+        align-items: stretch; 
+    }
+
+    .plan-card { 
+        flex: 1;
+        margin: 0 60px 30px 60px; 
+    }
+
+    .simple-price-list {
+        margin: 0 30px 50px 30px;
+    }
+
+    .large-price-table {
+        margin: 0 30px 50px 30px;
+    }
+
+    .discount-comparison {
+        margin: 0 30px 35px 30px;
+    }
+
+    .comp-price {
+        font-size: 1.1rem;
+    }
+
+    .comp-header {
+        font-size: 1.2rem;
+    }
+    
+    .comp-label {
+        font-size: 1.1rem;
+    }
+
+    .box-size-note {
+        font-size: 1rem;
+    }
+}
+
+/* -------------------- CTA6: プランCTAエリア -------------------- */
+
+.plan-cta-area {
+    background-color: #12318f; /* ブランドカラーの濃いネイビー */
+    border-radius: 30px;       /* ボックス全体の角丸 */
+    padding: 45px 20px;        /* 上下の余白を広めに確保 */
+    text-align: center;
+    color: #ffffff;
+    margin: 25px auto;         /* 前後のセクションとの間隔 */
+    max-width: 500px;          /* スマートフォンで見やすい横幅に制限 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 軽い影で浮かせる */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 期間限定キャンペーンバッジ */
+.cta-badge {
+    display: inline-block;
+    background-color: #fceb9c; /* 明るい黄色 */
+    color: #12318f;            /* 文字はネイビー */
+    padding: 8px 20px;
+    border-radius: 50px;       /* カプセル型の形状 */
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* タイトルとサブテキスト */
+.cta-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #fceb9c;           /* タイトルも黄色で強調 */
+}
+
+.cta-sub {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* 立体的な黄色いボタン */
+.btn-cta-yellow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fceb9c;
+    color: #12318f;
+    padding: 3px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 25px;
+    /* 立体感を出すための影設定 */
+    box-shadow: 0 8px 0 #d9c56b; 
+    transition: all 0.2s ease;
+}
+
+/* ボタンを押した時の動き */
+.btn-cta-yellow:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #d9c56b;
+}
+
+.btn-cta-icon {
+    width: 24px;
+    height: auto;
+    margin-right: 12px;
+}
+
+.btn-cta-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.btn-cta-arrow {
+    margin-left: 10px;
+    font-size: 1.6rem;
+}
+
+/* 下部の簡単登録チェック */
+.cta-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.cta-check img {
+    margin: 0 5px 0 0;
+}
+
+.check-icon {
+    width: 20px;
+    height: auto;
+}
+
+/* 背景に円形の装飾を加える（画像にある薄い円の再現） */
+.plan-cta-area::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+/* -------------------- 宅配完結の収納ライフセクション -------------------- */
+.delivery-life-section {
+    padding: 50px 20px 30px 20px;
+    background-color: #ffffff;
+}
+
+.delivery-life-section .section-title {
+    color: #12318f;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+/* イントロカード（大きな白いカード） */
+.intro-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    padding: 30px 15px;
+    text-align: left;
+}
+
+.intro-visual img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+.intro-body {
+    padding: 30px 20px;
+}
+
+.intro-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* 強調情報ボックス（薄い黄色の背景） */
+.highlight-info-box {
+    background-color: #fffceb;
+    border-radius: 15px;
+    padding: 25px 15px;
+    border-left: 5px solid #fceb9c; /* 左側にアクセントライン */
+}
+
+.highlight-info-box p {
+    font-size: 0.9rem;
+    color: #12318f;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* -------------------- 3つのメリットグリッド -------------------- */
+.summary-merit-grid {
+    margin-bottom: 60px;
+}
+
+.merit-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.merit-card h3 {
+    font-size: 1.2rem;
+    color: #12318f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.merit-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+/* -------------------- 最終コンバージョンエリア -------------------- */
+.final-conv-area {
+    background-color: #fceb9c; /* メインの黄色 */
+    border-radius: 30px;
+    padding: 45px 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+.conv-title {
+    font-size: 1.5rem;
+    color: #12318f;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.conv-sub {
+    font-size: 1rem;
+    color: #12318f;
+    margin-bottom: 23px;
+    opacity: 0.9;
+}
+
+.merit-icon-circle img {
+    width: 70px;
+}
+
+/* メインボタン */
+.final-conv-area .btn-primary-blue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #12318f;
+    color: #ffffff;
+    padding: 16px 0;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 25px;
+    box-shadow: 0 8px 25px rgba(18, 49, 143, 0.3);
+    transition: transform 0.2s;
+}
+
+.final-conv-area .btn-primary-blue:active {
+    transform: translateY(3px);
+}
+
+.btn-primary-blue .icon-star { margin-right: 12px; }
+.btn-primary-blue .arrow { margin-left: 12px; }
+
+/* 下部ノート */
+.conv-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #12318f;
+}
+
+.conv-note img {
+    width: 20px;
+    margin: 0 5px 0 0;
+}
+
+
+
+/* PCサイズ用調整 */
+@media (min-width: 555px) {
+    .summary-merit-grid {
+        margin: 0 73px;
+    }
+    .merit-card {
+        flex: 1;
+    }
+
+    .cta-title {
+        font-size: 1.6rem;
+    }
+
+    .cta-sub {
+        font-size: 1rem;
+    }
+
+    .btn-cta-yellow {
+        font-size: 1.2rem;
+    }
+
+    .merit-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .merit-card p {
+        font-size: 1rem;
+    }
+
+    .merit-icon-circle img {
+        width: 80px;
+    }
+}
+
+/* -------------------- フッター -------------------- */
+footer.lp-container {
+    background-color: #12318f; /* ブランドカラーの濃いネイビー */
+    padding: 40px 20px 10px 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ロゴとブランド名エリア */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* アイコンと文字の間隔 */
+    margin-bottom: 12px;
+}
+
+.footer-icon {
+    width: 26px;
+    height: auto;
+}
+
+.footer-site-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fceb9c; /* 文字色も黄色に合わせる */
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+/* メッセージエリア */
+
+
+.footer-copy-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 運営会社リンク */
+.company {
+    margin-top: 10px;
+}
+
+.company a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.5rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.company a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* PCサイズで元の大きさに戻す */
+@media (min-width: 555px) {
+    .footer-site-title {
+        font-size: 2.4rem;
+    }
+    .footer-logo-circle {
+        width: 60px;
+        height: 60px;
+        align-items: center;
+        display: flex;
+    }
+    .footer-icon {
+        width: 32px;
+    }
+
+    .footer-copy-text {
+        font-size: 1rem;
+    }
+
+    .company a {
+        font-size: 0.7rem;
+    }
+}
+
+
+/*改行*/
+
+.responsive-break {
+	display: none; /* デフォルトでは改行を非表示 */
+}
+
+@media (max-width: 600px) {
+	.responsive-break {
+		/* ブロック要素にすることで、挿入された位置で必ず改行される */
+		display: block; 
+				
+	    /* 改行部分が高さを持たないように調整 */
+		height: 0;
+		margin: 0;
+		padding: 0;
+	}
+}
