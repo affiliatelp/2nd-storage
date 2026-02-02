@@ -57,17 +57,26 @@ img {
 
 /*header*/
 .site-logo {
-  background-color: #fceb9c;  /* 背景色クリームイエロー */
-  border-radius: 15px; /* 角の丸み */
-  padding: 12px 25px; /*内側の余白*/
-  color: #313131;    /* テキストとアイコンの色 */
-  font-weight: bold;   /* 文字を太く */
-  color: #12318F; /* フォントカラー */
-  font-size: 0.9rem;
-
   /* レイアウト（横並びにするため） */
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: flex-start;
+    padding-left: 5px;
+}
+
+.lp-title {
+    display: flex;
+    flex-direction: column;
+    color: #12318F; /* フォントカラー */
+}
+
+.top-title {
+    padding: 0px; /*内側の余白*/
+    font-weight: bold;   /* 文字を太く */
+    font-size: 1.2rem;
+}
+
+.sub-text {
+    font-size: 0.6rem;
 }
 
 .site-title img {
@@ -85,13 +94,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 2px solid #DEDCDC;
+  padding: 0 0 13px 0;
 }
 
 /* ロゴのアイコンサイズ調整 */
 .site-logo img {
-  width: 20px;
+  width: 18px;
   height: auto;
-  margin-right: 8px;
+  margin-right: 4px;
+  margin-top: 5px;
 }
 
 /* ハンバーガーボタンのデザイン */
@@ -195,6 +207,10 @@ header {
 @media (min-width: 555px) {
   .hero-copy {
     font-size: 2rem;
+  }
+
+  .header-inner {
+    padding: 0 0 20px 0;
   }
 }
 
