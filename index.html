@@ -3,6 +3,20 @@
 
   <head>
     <meta charset="UTF-8">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17549726016"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Google広告のID
+      gtag('config', 'AW-17549726016');
+      // GA4のID
+      gtag('config', 'G-Y724CSQH91');
+    </script>
+
     <title>トランクルーム.Info</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="スマホひとつで完結！「自分で運ばない」収納サービス 宅配型トランクルームは、荷物の出し入れをすべて宅配便感覚で行える新時代の収納術。重い荷物を施設まで運ぶ必要はありません。アプリやWEBから申し込めば、ご自宅まで集荷に伺います。">
@@ -1521,6 +1535,39 @@
           </p>
         </div>
       </footer>
+
+      <!-- GA4測定用 -->
+      <script>
+      (function() {
+          // 計測したいポイント（25%刻み）
+          var scrollPoints = [25, 50, 75, 90]; 
+          var sentPoints = [];
+
+          window.addEventListener('scroll', function() {
+              var h = document.documentElement, 
+                  b = document.body,
+                  st = 'scrollTop',
+                  sh = 'scrollHeight';
+              
+              // 現在のスクロール進捗率を計算
+              var scrollPercent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+
+              scrollPoints.forEach(function(point) {
+                  // 指定したポイントを超え、かつ未送信の場合に実行
+                  if (scrollPercent >= point && sentPoints.indexOf(point) === -1) {
+                      sentPoints.push(point);
+                      
+                      // 既存のgtag関数を使用してイベントを送信
+                      if (typeof gtag === 'function') {
+                          gtag('event', 'lp_scroll_depth', {
+                              'depth_percent': point
+                          });
+                      }
+                  }
+              });
+          }, {passive: true});
+      })();
+      </script>
 
   </body>
 </html>
